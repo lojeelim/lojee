@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+
+  ) { }
+
+  public users: any  = []
+
+  async getUserList(){
+      await this.userService.getUserList().subscribe((user: any) => {
+      if(user){
+        Object.values(user).map((u: any) =>{
+          console.log(u)
+          this.users.push({
+            id: u.id,
+            username: u.username,
+            password: u.password
+          })
+        })
+      }
+    })
+    console.log('users',this.users)
+  }
 
   ngOnInit(): void {
+    this.getUserList()
   }
 
 }

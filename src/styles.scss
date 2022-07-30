@@ -1,1 +1,10 @@
+@import 'primeflex/primeflex.scss';
+
+.mybutton {
+    @include styleclass('bg-blue-500 text-white hover:bg-blue-600 border-round transition-colors transition-duration-150 p-3 border-none');
+}
 /* You can add global styles to this file, and also import other style files */
+*{
+ margin: 0;
+ padding: 0;
+}

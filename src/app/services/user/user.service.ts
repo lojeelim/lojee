@@ -13,7 +13,7 @@ export class UserService {
 
   ) { }
 
-  public Get_User():  Observable<[any]>{
+  public getUserList():  Observable<[any]>{
     return new Observable<[any]>((observer) => {
       let userList:any = [];
       this.apollo.query({ query: GET_USERS }).subscribe((data: any) => {
@@ -26,7 +26,7 @@ export class UserService {
           username: user.username,
           password: user.password
         })
-
+        console.log(userList)
       })
       observer.next(userList)
       observer.complete();

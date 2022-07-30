@@ -9,15 +9,23 @@ import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
 import {InMemoryCache} from '@apollo/client/core';
 import { graphQLURL } from 'src/environments/environment';
-import { HeaderComponent } from './main-layouts/header/header.component';
-import { FooterComponent } from './main-layouts/footer/footer.component';
+// import { HeaderComponent } from './main-layouts/header/header.component';
+// import { FooterComponent } from './main-layouts/footer/footer.component';
 import { PageNotFoundComponent } from './main-layouts/page-not-found/page-not-found.component';
-import {ButtonModule} from 'primeng/button';
+// import {ButtonModule} from 'primeng/button';
+import {MenubarModule} from 'primeng/menubar';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { RippleModule } from 'primeng/ripple';
+import { } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AccordionModule} from 'primeng/accordion';
+import {StyleClassModule} from 'primeng/styleclass';
+import {CardModule} from 'primeng/card';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
+
+    // FooterComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -26,7 +34,14 @@ import {ButtonModule} from 'primeng/button';
     ApolloModule,
     HttpClientModule,
     FormsModule,
-    ButtonModule
+    // ButtonModule,
+    TabMenuModule,
+    MenubarModule,
+    RippleModule,
+    BrowserAnimationsModule,
+    AccordionModule,
+    StyleClassModule,
+    CardModule
   ],
   providers: [{
     provide: APOLLO_OPTIONS,
