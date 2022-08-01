@@ -1,6 +1,6 @@
 import { gql } from 'apollo-angular';
 
-export const GET_USERS = gql`
+export const getUser = gql`
 query MyQuery {
   users {
     id
@@ -9,3 +9,11 @@ query MyQuery {
   }
 }
 `;
+
+export const addUser = gql`
+mutation MyMutation($Password: String, $Username: String) {
+  insert_users(objects: {password: $Password, username: $Username}) {
+    affected_rows
+  }
+}
+`

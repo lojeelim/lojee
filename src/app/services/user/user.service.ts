@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import { GET_USERS } from 'src/graphQL/user'
+import { observable, Observable } from 'rxjs';
+import { UserModel } from 'src/app/components/models/user/user.model';
+import { getUser, addUser } from 'src/graphQL/user'
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +14,35 @@ export class UserService {
 
   ) { }
 
-  public getUserList():  Observable<[any]>{
-    return new Observable<[any]>((observer) => {
+  public  getUserList():  Observable<[any]>{
+    return  new Observable<[any]>((observer) => {
       let userList:any = [];
-      this.apollo.query({ query: GET_USERS }).subscribe((data: any) => {
+      this.apollo.query({ query: getUser }).subscribe((data: any) => {
       let users = data.data
-      
-      Object.values(users.users).map((user: any) => {
-        
-        userList.push({
-          id: user.id,
-          username: user.username,
-          password: user.password
-        })
-        console.log(userList)
+      userList = Object.values(users.users).map((user: any) => {
+          return user
       })
       observer.next(userList)
       observer.complete();
+      })
+    })
+  }
+
+  public addNewUser(user: UserModel): Observable<[any]>{
+    return new Observable<[any]> ((observer) =>{
+      this.apollo.mutate({
+        mutation: addUser,
+        variables: {
+          Username: user.Username,
+          Password: user.Password
+        }
+      }).subscribe((data:any) =>{
+        observer.next(data);
+        observer.complete();
+      },
+      error =>{
+        observer.next([error.error]);
+        observer.complete();
       })
     })
   }

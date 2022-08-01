@@ -14,12 +14,11 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   public users: any  = []
-
+  
   async getUserList(){
       await this.userService.getUserList().subscribe((user: any) => {
       if(user){
         Object.values(user).map((u: any) =>{
-          console.log(u)
           this.users.push({
             id: u.id,
             username: u.username,
@@ -28,7 +27,6 @@ export class DashboardComponent implements OnInit {
         })
       }
     })
-    console.log('users',this.users)
   }
 
   ngOnInit(): void {

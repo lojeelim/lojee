@@ -2,10 +2,11 @@
 
 
 
-<li *ngFor="let user of users">
+<span *ngFor="let user of users">
 <div *ngIf="user">
- {{user.password}}
+ <!-- {{user.password}} -->
+ {{user.id}}
 </div> 
 
-</li>
+</span>
  
