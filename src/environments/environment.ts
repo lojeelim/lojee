@@ -3,13 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
-
-
-export const graphQLURL = {
+  production: false,
   endpoint: 'https://lojee-app.herokuapp.com/v1/graphql'
-}
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

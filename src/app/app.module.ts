@@ -8,25 +8,25 @@ import {HttpClientModule} from '@angular/common/http';
 import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
 import {InMemoryCache} from '@apollo/client/core';
-import { graphQLURL } from 'src/environments/environment';
-// import { HeaderComponent } from './main-layouts/header/header.component';
-// import { FooterComponent } from './main-layouts/footer/footer.component';
-import { PageNotFoundComponent } from './main-layouts/page-not-found/page-not-found.component';
-// import {ButtonModule} from 'primeng/button';
+import { environment } from 'src/environments/environment'
+import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { RippleModule } from 'primeng/ripple';
-import { } from '@angular/platform-browser/animations';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccordionModule} from 'primeng/accordion';
 import {StyleClassModule} from 'primeng/styleclass';
 import {CardModule} from 'primeng/card';
+
+import {ImageModule} from 'primeng/image';
+
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
 
     // FooterComponent,
-    PageNotFoundComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -34,14 +34,15 @@ import {CardModule} from 'primeng/card';
     ApolloModule,
     HttpClientModule,
     FormsModule,
-    // ButtonModule,
+    ButtonModule,
     TabMenuModule,
     MenubarModule,
     RippleModule,
     BrowserAnimationsModule,
     AccordionModule,
     StyleClassModule,
-    CardModule
+    CardModule,
+    ImageModule,
   ],
   providers: [{
     provide: APOLLO_OPTIONS,
@@ -52,7 +53,7 @@ import {CardModule} from 'primeng/card';
           // getting graphql endpoint from the env.
           // uri:  'https://lojee-app.herokuapp.com/v1/graphql'
         
-          uri:graphQLURL.endpoint,
+          uri:environment.endpoint,
         })
       };
     },  
